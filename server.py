@@ -1,21 +1,32 @@
 from training.dataset import search
+from pydantic import BaseModel
 from RobertaLmodels import RobertaClassifierWithExtra
 from transformers import RobertaTokenizer
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import torch
 import os
-
+from dotenv import load_dotenv
 
 
 class InputText(BaseModel):
     text: str
 
+app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow all for now
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/predict")
 def predict(data: InputText):
     
     #--- model ---
-    os.load_dotenv()
+    load_dotenv()
     path = os.getenv("model")
     device = "cuda" if torch.cuda.is_available() else "cpu"
     MODEL_NAME = "roberta-base"
