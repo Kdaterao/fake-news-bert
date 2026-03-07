@@ -13,7 +13,7 @@
 
 
 
-## Datasets
+# Datasets
  
  * labeled dataset of real and fake news from 2015 to 2017 
  [Kaggle Dataset](https://www.kaggle.com/code/chanchal24/fake-news-detection/input)
@@ -25,14 +25,18 @@
 
 ### Set Up inverted Index 
 
-* Extracted news articles from **3DLNews2** spanning 2015 to 2017 and saved them as a CSV file.
+* Extract news articles from **3DLNews2** spanning 2015 to 2017 and save them as a CSV file.
 
-* Processed the dataset using `index_builder.py` to create an **inverted index** with **Whoosh**, enabling fast and efficient search queries based on article content.
+* Process the dataset using `index_builder.py` to create an **inverted index** with **Whoosh**, enabling fast and efficient search queries based on article content
+
+* Put filepath in .env, with the name "invertedIndex"
 
 
 ### Set Up kaggle dataset
 
-* Go to Kaggle Dataset and download the dataset, then simply put the true.csv and the fake.csv in the project
+* Go to Kaggle Dataset and download the dataset, then put their file paths in the .env with variable names "real" and "fake"
+
+
 
 
 
